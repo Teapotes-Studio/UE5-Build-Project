@@ -99,11 +99,11 @@ runs:
         $releaseArg = if ($release -ne 'false') { "-createreleaseversion=$release" } else { "" }
         $patchArg = if ($patch -ne 'false') { "-generatepatch -basedonreleaseversion=$patch" } else { "" }
   
-        $command = |
+        $command = 
           $runUatPath BuildCookRun  \
           -project=$uprojectPath  \
           -clientconfig=$buildConfig -serverconfig=$buildConfig -platform=$platform -map=$maps \
           $serverArg $cookArg $stageArg $pakArg $packageArg $archiveArg $editorArg $encryptIniArg $releaseArg $patchArg \
           -noP4 -build -unattended -utf8output -prereqs
-        
+        echo $command
         $command
